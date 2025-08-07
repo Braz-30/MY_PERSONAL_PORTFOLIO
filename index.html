@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biraj Gamal - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            // Initialize EmailJS with public key
+            emailjs.init("s0xdDnLRgKzQzcSRQ");
+        })();
+    </script>
+</head>
+<body>
+
+
+    <nav class="navbar">
+        <div class="logo">BG</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <img src="./profile.jpg" alt="Biraj Gamal" class="profile-img">
+            <h1>Hello, I'm Biraj Gamal</h1>
+            <p class="title">Student</p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/biruz._/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/biraj.shrestha.969300/?_rdr" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="mailto:birajshrestha003@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>I am a passionate student with a strong curiosity for learning and problem-solving. I enjoy analyzing complex challenges and transforming them into elegant, practical solutions. My drive for continuous growth pushes me to explore innovative ideas, improve my skills, and approach every task with creativity and dedication</p>
+                <div class="skills">
+                    <h3>My Skills</h3>
+                    <div class="skill-tags">
+                        <span>Hardworking</span>
+                        <span>Communication & Collaboration</span>
+                        <span>Leadership & Teamwork</span>
+                        <span>Time Management</span>
+                        <span>Creative Thinking</span>
+                        <span>Process Improvement</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <h2>My Projects</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <img src="project1.jpg" alt="Project 1">
+                <h3>Quiz Game</h3>
+                <p> A fun quiz game to play at your free time.</p>
+                <div class="project-links">
+                    <a href="https://braz-30.github.io/quiz-game/" target="_blank" class="btn">View Project</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="project2.jpg" alt="Project 2">
+                <h3>SK Clothing Store</h3>
+                <p>A sample ecommerce website for clothing business.</p>
+                <div class="project-links">
+                    <a href="https://braz-30.github.io/SK/" target="_blank" class="btn">View Project</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="project3.jpg" alt="Project 3">
+                <h3>Sample portfolio</h3>
+                <p>A portfolio for all details.</p>
+                <div class="project-links">
+                    <a href="https://braz-30.github.io/SK.portfolio/" target="_blank" class="btn">View Project</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="contact" class="contact">
+        <h2>Get In Touch</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <p><a href="mailto:birajshrestha003@gmail.com">birajshrestha003@gmail.com</a></p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <p>+9779828808007</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-location-dot"></i>
+                    <p>Hadigaun, Kathmandu</p>
+                </div>
+            </div>
+            <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+            
+            <script>
+                function handleSubmit(event) {
+                    event.preventDefault();
+                    
+                    const button = event.target.querySelector('button');
+                    button.disabled = true;
+                    button.textContent = 'Sending...';
+                    
+                    const formData = new FormData(event.target);
+                    const templateParams = {
+                        from_name: formData.get('name'),
+                        from_email: formData.get('email'),
+                        message: formData.get('message'),
+                        to_name: 'Biraj',
+                        to_email: 'birajshrestha003@gmail.com'
+                    };
+
+                    emailjs.send('service_s8ok5gr', 'template_vdyzqrl', templateParams)
+                        .then(function() {
+                            alert('Thank you! Your message has been sent successfully.');
+                            event.target.reset();
+                        }, function(error) {
+                            alert('Sorry, there was an error sending your message. Please try again.');
+                            console.error('EmailJS error:', error);
+                        })
+                        .finally(function() {
+                            button.disabled = false;
+                            button.textContent = 'Send Message';
+                        });
+                }
+            </script>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Biraj Gamal. All rights reserved.</p>
+    </footer>
+</body>
+</html>
